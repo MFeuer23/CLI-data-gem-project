@@ -2,6 +2,6 @@
 
 require "./lib/mta_service_status"
 
-puts "hello world"
+puts "Welcome!"
 
 MtaServiceStatus::Cli.new.call
