@@ -9,6 +9,9 @@ class MtaServiceStatus::Cli
 
       puts "To view the current status of MTA service, enter status"
       puts "To view the status of one train, enter train line"
+      input = nil
+    while input != "exit"
+      puts "enter status, train line, or exit"
       input = gets.chomp
       case input
       when"status"
@@ -45,14 +48,16 @@ class MtaServiceStatus::Cli
       when "s"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
+      when "exit"
+          nil
       else
           puts "please enter train line, status, or exit"
       end
-  
+    end
   end
 
   def goodbye
-    "Happy Travels! Know before you go :)"
+    puts "Happy Travels! Know before you go :)"
   end
 
 end
