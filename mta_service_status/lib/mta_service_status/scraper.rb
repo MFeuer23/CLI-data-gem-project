@@ -1,5 +1,10 @@
 require 'open-uri'
 require 'nokogiri'
+require 'pry'
+
+html = open('alert.mta.info')
+doc = Nokogiri::HTML(html)
+binding.pry
 
 
 
@@ -11,6 +16,6 @@ class MtaServiceStatus::Scraper
   end
 
   def status
-    @status =
+    @status
   end
 end

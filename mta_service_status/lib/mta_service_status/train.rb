@@ -6,6 +6,7 @@ class Train
   def initialize(name)
     @name = name
     @@general_status << self
+
   end
 
   def general_status
@@ -14,4 +15,5 @@ class Train
 
   def status(train)
     #@ status = Scraper.new.status
+  end
 end
