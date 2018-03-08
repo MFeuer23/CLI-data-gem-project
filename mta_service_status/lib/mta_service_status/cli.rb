@@ -10,46 +10,47 @@ class MtaServiceStatus::Cli
       puts "To view the current status of MTA service, enter status"
       puts "To view the status of one train, enter train line"
       input = nil
-    while input != "exit"
+    while input != "EXIT"
       puts "enter status, train line, or exit"
-      input = gets.chomp
+      input = gets.chomp.upcase
       case input
       when"status"
-          puts "current train status!"
-          Train.status_scrape
           Train.status
-          #print status of all trains
       when "1", "2", "3"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
+          #123_train.detail
       when "4", "5", "6"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
       when "7"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "a", "c", "e"
+      when "A", "C", "E"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "b", "d", "f", "m"
+      when "B", "D", "F", "M"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "g"
+      when "G"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "j", "z"
+      when "J", "Z"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "l"
+      when "L"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "n", "q", "r", "w"
+      when "N", "Q", "R", "W"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "s"
+      when "S"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
-      when "exit"
+      when "SIR"
+          puts "good! #{input}"
+          #Good to go, or more specific delay detail
+      when "EXIT"
           nil
       else
           puts "please enter train line, status, or exit"
