@@ -1,6 +1,6 @@
 
 class Train
-  attr_accessor :name, :status, :detail
+  attr_accessor :name, :status, :detail, :message
   @@all = []
   @@train_name_array = ["123", "456", "7", "ace", "bdfm", "g", "jz", "l", "nqrw", "s", "sir"]
   def initialize(name, status)
@@ -29,18 +29,25 @@ class Train
     @@all.each {|train| puts "  #{train.name.upcase} - #{train.status}"}
   end
   
-  def detail_scrape
-  
-    one_two_three = @@all[0]
-    if one_train.status == "Good Service"
-      puts "gooood"
-    else 
-      html = open('http://alert.mta.info/status/subway/BDFM/')
-      doc = Nokogiri::HTML(html)
-      # train line: doc.css("#status_display img").attr('alt').value
-      # time_posted and message : doc.css("#status_display").text.strip
-      
-      
+  def self.detail_scrape
+    status_scrape
+    
+    @@all.each do |train|
+      if train.status == "Good Service"
+        puts "gooood"
+      else 
+        html = open('http://alert.mta.info/status/subway/BDFM/')
+        doc = Nokogiri::HTML(html)
+        train.detail = doc.css("#status_display img").attr('alt').value
+        train.message = doc.css("#status_display").text.strip
+        @@all
+      end
     end
+  end
+  
+  def detail
+    self.class.detail_scrape
+    puts "#{detail} - #{message}"
+    
   end
 end

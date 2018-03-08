@@ -18,8 +18,7 @@ class MtaServiceStatus::Cli
           Train.status
       when "1", "2", "3"
           puts "good! #{input}"
-          #Good to go, or more specific delay detail
-          #123_train.detail
+          @@all[0].detail
       when "4", "5", "6"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
