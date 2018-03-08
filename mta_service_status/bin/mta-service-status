@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+require "bundler/setup"
+require "mta_service_status"
 
-require "./lib/mta_service_status"
 
 puts "Welcome!"
 

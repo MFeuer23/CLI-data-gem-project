@@ -1,8 +1,9 @@
-require 'open-uri'
+
 require 'nokogiri'
+require 'open-uri'
 require 'pry'
 
-html = open('alert.mta.info')
+html = open('http://alert.mta.info/')
 doc = Nokogiri::HTML(html)
 binding.pry
 
