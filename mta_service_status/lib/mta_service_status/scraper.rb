@@ -3,9 +3,8 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-html = open('http://alert.mta.info/')
-doc = Nokogiri::HTML(html)
-binding.pry
+
+
 
 
 
@@ -16,7 +15,10 @@ class MtaServiceStatus::Scraper
     @train = train
   end
 
-  def status
-    @status
+  def status(train)
+    html = open('http://alert.mta.info/status/subway/#{train}/25341439')
+    doc = Nokogiri::HTML(html)
+    @status = doc.css("span.TitleDelay").text
+    binding.pry
   end
 end
