@@ -39,8 +39,9 @@ class Train
       else 
         html = open('http://alert.mta.info/status/subway/BDFM/')
         doc = Nokogiri::HTML(html)
-        train.detail = doc.css("#status_display img").attr('alt').value
-        train.message = doc.css("#status_display").text.strip
+        train_line = doc.css("#status_display img").attr('alt').value
+        train_line.chomp!(" Icon")
+        train.message = doc.css("#status_display").text.strip!
         @@all
       end
     end

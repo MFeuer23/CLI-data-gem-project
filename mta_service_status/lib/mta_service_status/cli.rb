@@ -14,50 +14,18 @@ class MtaServiceStatus::Cli
       puts "enter status, train line, or exit"
       input = gets.chomp.upcase
       case input
-      when"status"
+      when"STATUS"
           Train.status
-      when "1", "2", "3"
+      when "1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "B", "D", "F", "M", "G", "J", "Z", "L", "N", "Q", "R", "W", "S", "SIR"
           Train.detail_scrape
           Train.all.detect do |train| 
-            if train.name == "123" && train.status == "Good Service"
+            if train.name.include?(input) && train.status == "Good Service"
               puts "#{train.status}"
-            elsif train.name == "123" && train.status != "Good Service"
+            elsif train.name.include?(input) && train.status != "Good Service"
               puts "#{train.detail} - #{train.message}"
             end
           end
-      
-      
-      
-      when "4", "5", "6"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "7"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "A", "C", "E"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "B", "D", "F", "M"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "G"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "J", "Z"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "L"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "N", "Q", "R", "W"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "S"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
-      when "SIR"
-          puts "good! #{input}"
-          #Good to go, or more specific delay detail
+    
       when "EXIT"
           nil
       else
