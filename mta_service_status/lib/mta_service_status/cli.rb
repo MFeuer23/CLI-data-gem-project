@@ -17,7 +17,7 @@ class MtaServiceStatus::Cli
       when"status"
           puts "current train status!"
           Train.status_scrape
-          puts "#{Train.all}"
+          Train.status
           #print status of all trains
       when "1", "2", "3"
           puts "good! #{input}"
