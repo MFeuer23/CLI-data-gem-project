@@ -1,18 +1,22 @@
 
 class Train
   attr_accessor :name, :status, :time_posted, :message
-  @@general_status = {}#train => status
+  @@all = {}#train => status
 
   def initialize(name)
     @name = name
-    @@general_status << self
+    @@all << self
   end
 
-  def general_status
-    @@general_status
+  def all
+    @@all
   end
 
   def status(train)
     #@ status = Scraper.new.status
+  end
+  
+  def time_posted(train)
+    #@time posted = Scraper.
   end
 end
