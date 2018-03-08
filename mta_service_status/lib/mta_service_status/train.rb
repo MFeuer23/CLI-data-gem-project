@@ -34,7 +34,8 @@ class Train
     
     @@all.each do |train|
       if train.status == "Good Service"
-        puts "gooood"
+        train.detail = ""
+        train.message = ""
       else 
         html = open('http://alert.mta.info/status/subway/BDFM/')
         doc = Nokogiri::HTML(html)
@@ -45,9 +46,8 @@ class Train
     end
   end
   
-  def detail
-    self.class.detail_scrape
-    puts "#{detail} - #{message}"
+  #def detail(train)
+ #   puts "#{train.detail} - #{train.message}"
     
-  end
+ #end
 end

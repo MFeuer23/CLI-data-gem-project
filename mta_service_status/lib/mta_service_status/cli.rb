@@ -17,8 +17,17 @@ class MtaServiceStatus::Cli
       when"status"
           Train.status
       when "1", "2", "3"
-          puts "good! #{input}"
-          @@all[0].detail
+          Train.detail_scrape
+          Train.all.detect do |train| 
+            if train.name == "123" && train.status == "Good Service"
+              puts "#{train.status}"
+            elsif train.name == "123" && train.status != "Good Service"
+              puts "#{train.detail} - #{train.message}"
+            end
+          end
+      
+      
+      
       when "4", "5", "6"
           puts "good! #{input}"
           #Good to go, or more specific delay detail
