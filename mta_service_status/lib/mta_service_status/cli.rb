@@ -16,7 +16,8 @@ class MtaServiceStatus::Cli
       case input
       when"status"
           puts "current train status!"
-          #scrape mta service advisory website
+          Train.status_scrape
+          puts "#{Train.all}"
           #print status of all trains
       when "1", "2", "3"
           puts "good! #{input}"
