@@ -2,7 +2,7 @@
 class Train
   attr_accessor :name, :status, :detail, :message
   @@all = []
-  @@train_name_array = ["123", "456", "7", "ace", "bdfm", "g", "jz", "l", "nqrw", "s", "sir"]
+  @@train_name_array = ["123", "456", "7", "ACE", "BDFM", "G", "JZ", "L", "NQRW", "S", "SIR"]
   def initialize(name, status)
     @name = name
     @status = status
@@ -37,12 +37,83 @@ class Train
         train.detail = ""
         train.message = ""
       else 
-        html = open('http://alert.mta.info/status/subway/BDFM/')
-        doc = Nokogiri::HTML(html)
-        train_line = doc.css("#status_display img").attr('alt').value
-        train_line.chomp!(" Icon")
-        train.message = doc.css("#status_display").text.strip!
-        @@all
+        if train.name == "123"
+          html = open('http://alert.mta.info/status/subway/123/')
+          doc = Nokogiri::HTML(html)
+          #train_line = doc.css("#status_display img").attr('alt').value
+          #train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+        elsif train.name == "456"
+          html = open('http://alert.mta.info/status/subway/456/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "7"
+          html = open('http://alert.mta.info/status/subway/7/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "ACE"
+          html = open('http://alert.mta.info/status/subway/ACE/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "BDFM"
+          html = open('http://alert.mta.info/status/subway/BDFM/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "G"
+          html = open('http://alert.mta.info/status/subway/G/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "JZ"
+          html = open('http://alert.mta.info/status/subway/JZ/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "L"
+          html = open('http://alert.mta.info/status/subway/L/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "NQRW"
+          html = open('http://alert.mta.info/status/subway/NQRW/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "S"
+          html = open('http://alert.mta.info/status/subway/S/')
+          doc = Nokogiri::HTML(html)
+          train_line = doc.css("#status_display img").attr('alt').value
+          train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        elsif train.name == "SIR"
+          html = open('http://alert.mta.info/status/subway/SIR/')
+          doc = Nokogiri::HTML(html)
+          # train_line = doc.css("#status_display img").attr('alt').value
+          # train.detail = train_line.chomp!(" Icon")
+          train.message = doc.css("#status_display").text.strip!
+          @@all
+        end
       end
     end
   end

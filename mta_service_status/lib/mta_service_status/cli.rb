@@ -19,6 +19,7 @@ class MtaServiceStatus::Cli
       when "1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "B", "D", "F", "M", "G", "J", "Z", "L", "N", "Q", "R", "W", "S", "SIR"
           Train.detail_scrape
           Train.all.detect do |train| 
+         
             if train.name.include?(input) && train.status == "Good Service"
               puts "#{train.status}"
             elsif train.name.include?(input) && train.status != "Good Service"
