@@ -1,33 +1,10 @@
-
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
-def MtaServiceStatus
+module Scraper
   
-end
-
-
-
-
-class Scraper
-  attr_accessor :train, :status, :time_posted, :message
-
-  def initialize(train)
-    @train = train
-  end
-
-  def self.scrape_index
-    html = open('http://service.mta.info/ServiceStatus/status.html')
-    doc = Nokogiri::HTML(html)
-    binding.pry
-    status_array = doc.css("td.subwayCategory").collect {|train| train.text}
+  def parse(doc, train)
+    alt_tags = doc.css('img').map{ |i| i['alt'] } 
+    icons = alt_tags.uniq.reject { |a| a.nil? }
+    train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
+    train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
   end
   
-  def self.scrape_train(train)
-    html = open('http://alert.mta.info/status/subway/#{train}/25341439')
-    doc = Nokogiri::HTML(html)
-    @status = doc.css("span.TitleDelay").text
-    
-  end
 end

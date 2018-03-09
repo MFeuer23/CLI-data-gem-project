@@ -1,5 +1,6 @@
 
 class Train
+  include Scraper
   attr_accessor :name, :status, :detail, :message
   @@all = []
   @@train_name_array = ["123", "456", "7", "ACE", "BDFM", "G", "JZ", "L", "NQRW", "S", "SIR"]
@@ -40,87 +41,50 @@ class Train
         if train.name == "123"
           html = open('http://alert.mta.info/status/subway/123/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "456"
           html = open('http://alert.mta.info/status/subway/456/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "7"
           html = open('http://alert.mta.info/status/subway/7/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "ACE"
           html = open('http://alert.mta.info/status/subway/ACE/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "BDFM"
           html = open('http://alert.mta.info/status/subway/BDFM/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "G"
           html = open('http://alert.mta.info/status/subway/G/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "JZ"
           html = open('http://alert.mta.info/status/subway/JZ/')
           doc = Nokogiri::HTML(html)
-         alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "L"
           html = open('http://alert.mta.info/status/subway/L/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "NQRW"
           html = open('http://alert.mta.info/status/subway/NQRW/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "S"
           html = open('http://alert.mta.info/status/subway/S/')
           doc = Nokogiri::HTML(html)
-          alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         elsif train.name == "SIR"
           html = open('http://alert.mta.info/status/subway/SIR/')
           doc = Nokogiri::HTML(html)
-         alt_tags = doc.css('img').map{ |i| i['alt'] } 
-          icons = alt_tags.uniq.reject { |a| a.nil? }
-          train.detail = icons.collect {|icon| icon.chomp!(" Icon")}
-          train.message = doc.css("#status_display").text.gsub!(/(&nbsp;|\s)+/, " ")
+          train.parse(doc, train)
         end
       end
     end
   end
-  
-  #def detail(train)
- #   puts "#{train.detail} - #{train.message}"
-    
- #end
+
 end
