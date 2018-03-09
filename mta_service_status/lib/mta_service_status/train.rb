@@ -4,6 +4,7 @@ class Train
   attr_accessor :name, :status, :detail, :message
   @@all = []
   @@train_name_array = ["123", "456", "7", "ACE", "BDFM", "G", "JZ", "L", "NQRW", "S", "SIR"]
+  
   def initialize(name, status)
     @name = name
     @status = status
