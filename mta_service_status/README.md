@@ -1,8 +1,6 @@
 # MtaServiceStatus
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mta_service_status`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a CLI gem that can show you the general status of the MTA, as well as a more detailed status for a particular train line.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use this handy gem to check the status of the MTA service. Type ./bin/mta-service-status into your terminal to run the CLI. You will be prompted to enter "status" to show the general status, or a train line for more details about a particular train, or exit.
 
 ## Development
 
