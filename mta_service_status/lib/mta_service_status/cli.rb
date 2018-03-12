@@ -17,14 +17,7 @@ class MtaServiceStatus::Cli
       when"STATUS"
           Train.status
       when "1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "B", "D", "F", "M", "G", "J", "Z", "L", "N", "Q", "R", "W", "S", "SIR"
-          Scrape.detail_scrape
-          Train.all.detect do |train| 
-            if train.name.include?(input) && train.status == "Good Service"
-              puts "#{train.status}"
-            elsif train.name.include?(input) && train.status != "Good Service"
-              puts "#{train.detail} - #{train.message}"
-            end
-          end
+          Train.find_details(input)
       when "EXIT"
           nil
       else
