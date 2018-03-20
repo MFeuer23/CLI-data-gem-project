@@ -1,6 +1,7 @@
 class MtaServiceStatus::Cli
 
   def call
+    puts "Welcome!"
     menu
     goodbye
   end

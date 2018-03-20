@@ -3,6 +3,6 @@ require "bundler/setup"
 require "mta_service_status"
 
 
-puts "Welcome!"
+
 
 MtaServiceStatus::Cli.new.call
